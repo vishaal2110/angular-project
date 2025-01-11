@@ -1,0 +1,16 @@
+.header{
+    background-color: #E9F1FA;
+    height: 75px;
+}
+.headerButtons{
+    float: right;
+    margin: 10px;
+}
+.userIcon { 
+    margin-right: .5em;
+    font-size: 2.5rem;
+    cursor: pointer;
+}
+.userLabel{
+    color: black !important;
+ }

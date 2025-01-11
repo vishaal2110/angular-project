@@ -1,0 +1,51 @@
+<header class="header">
+    <div>
+        <div class="headerButtons">
+            <p-button *ngIf="page !== 'login' && !loggedIn" label="Login" routerLink="/login"></p-button>
+            <p-button *ngIf="page !== 'signup' && !loggedIn" [style]="{ 'margin-left': '.5em' }" label="SignUp" routerLink="/sign-up"></p-button>
+            <i *ngIf="loggedIn" class="pi pi-user userIcon" (click)="updateUser()"></i>
+            <p-button *ngIf="loggedIn" label="Logout" (click)="logout()"></p-button>
+        </div>
+        <h1>Movie Review !</h1>
+    </div>
+
+    <div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':displayStyle}">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Update User</h4>
+            </div>
+            <form [formGroup]="userForm">
+                <div class="modal-body">
+                  <div class="form-group">
+                    <label class="userLabel" for="userName">User Name : </label>
+                    <input type="text" name="userName" class="form-control" placeholder="User Name"
+                      formControlName="name">
+                  </div>
+                  <div class="form-group">
+                    <label class="userLabel" for="email">Email : </label>
+                    <input type="text" name="email" class="form-control" placeholder="Email"
+                      formControlName="email">
+                  </div>
+                  <div class="form-group">
+                    <label class="userLabel" for="password">Password : </label>
+                    <input type="text" name="password" class="form-control" placeholder="Password"
+                      formControlName="password">
+                  </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" (click)="updateUserPopupButton()">
+                      Update
+                    </button>
+                    <button type="button" class="btn btn-danger" (click)="deleteUserButtonPopup()">
+                      Delete User
+                    </button>
+                    <button type="button" class="btn btn-secondary" (click)="cancel()">
+                      Cancel
+                    </button>
+                </div>
+              </form>
+          </div>
+        </div>
+      </div>
+</header>
