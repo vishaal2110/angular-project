@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, isDevMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -10,12 +10,17 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RatingModule } from 'primeng/rating';
 import { CardModule } from 'primeng/card';
 import { ButtonModule } from 'primeng/button';
-import { InputTextareaModule } from 'primeng/inputtextarea';
+import { InputTextarea } from 'primeng/inputtextarea';
 import { HttpClientModule } from '@angular/common/http';
 import { UserService } from './UserServices/user.service';
 import { HeadersComponent } from './headers/headers.component';
 import { OverlayPanelModule } from 'primeng/overlaypanel';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { StoreModule } from '@ngrx/store';
+import { reducers, metaReducers } from './reducers';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { EffectsModule } from '@ngrx/effects';
+import { UserEffects } from './user.effects';
 
 @NgModule({
   declarations: [
@@ -33,10 +38,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     RatingModule,
     CardModule,
     ButtonModule,
-    InputTextareaModule,
     HttpClientModule,
     OverlayPanelModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    StoreModule.forRoot(reducers, { metaReducers }),
+    isDevMode() ? StoreDevtoolsModule.instrument() : [],
+    EffectsModule.forRoot([UserEffects])
   ],
   providers: [ UserService ],
   bootstrap: [AppComponent]

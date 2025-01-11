@@ -4,9 +4,10 @@ import { UserService } from '../UserServices/user.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'app-headers',
-  templateUrl: './headers.component.html',
-  styleUrls: ['./headers.component.css']
+    selector: 'app-headers',
+    templateUrl: './headers.component.html',
+    styleUrls: ['./headers.component.css'],
+    standalone: false
 })
 
 export class HeadersComponent implements OnInit {

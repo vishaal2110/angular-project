@@ -62,10 +62,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "moviereview:build:production"
+              "buildTarget": "moviereview:build:production"
             },
             "development": {
-              "browserTarget": "moviereview:build:development"
+              "buildTarget": "moviereview:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -73,7 +73,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "moviereview:build"
+            "buildTarget": "moviereview:build"
           }
         },
         "test": {
@@ -98,6 +98,9 @@
     }
   },
   "cli": {
-    "analytics": false
+    "analytics": false,
+    "schematicCollections": [
+      "@ngrx/schematics"
+    ]
   }
 }
